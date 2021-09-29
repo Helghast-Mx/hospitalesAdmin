@@ -5,8 +5,16 @@
   <mat-divider></mat-divider>
   <h2 matSubheader class="mt-2">APPLICATIONS</h2>
 
+  
+
   <a mat-list-item routerLinkActive="list-item-active" routerLink="profile">
-    <mat-icon>home</mat-icon> Profile
+    
+    
+      <img [src]="usuario.imagenUrl" class="user-image ml-1 p-2" />
+      {{usuario.nombre  | slice:0:12}}{{(usuario.nombre.length > 12) ? '...' : ''}}
+    <!-- <mat-icon>home</mat-icon> Profile -->
+
+    
   </a>
   <a mat-list-item routerLinkActive="list-item-active" routerLink="pacientes">
     <mat-icon>Profile</mat-icon> Pacientes

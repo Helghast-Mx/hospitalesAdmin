@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Usuario } from 'src/app/models/usuario.model';
+import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
   selector: 'app-sidenav',
@@ -7,7 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidenavComponent implements OnInit {
 
-  constructor() { }
+  public usuario : Usuario;
+
+  constructor(
+              private usuarioService : UsuarioService
+  ) {
+    this.usuario = this.usuarioService.usuario
+   }
 
   ngOnInit(): void {
   }

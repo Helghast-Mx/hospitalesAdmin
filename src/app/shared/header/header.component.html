@@ -11,9 +11,9 @@
             [matMenuTriggerFor]="menu"
             class="user mt-2 d-flex align-items-center"
           >
-            <img src="./assets/user.jpg" alt="" class="user-image mr-1 p-2" />
+            <img [src]="usuario.imagenUrl" alt="" class="user-image mr-1 p-2" />
 
-            User Name
+            Usario {{usuario.nombre  | slice:0:10}}{{(usuario.nombre.length > 10) ? '...' : ''}}
             <mat-icon class="user-image-icon ml-1"
               >keyboard_arrow_down</mat-icon
             >
@@ -21,9 +21,17 @@
           <mat-menu #menu="matMenu">
             <button mat-menu-item
                     >
+              <mat-icon>home</mat-icon>
+              <span routerLink="/dashboard/profile">Home</span> 
+              
+            </button>
+            <button mat-menu-item
+                    >
               <mat-icon>exit_to_app</mat-icon>
               <a (click)="logout()">Logout</a> 
+              
             </button>
+
           </mat-menu>
         </li>
       </ul>

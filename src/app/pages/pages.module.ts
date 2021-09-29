@@ -18,6 +18,7 @@ import { DetailsPatientsComponent } from './details-patients/details-patients.co
 
 import { MainComponent } from './main/main.component';
 
+import { NzStepsModule } from 'ng-zorro-antd/steps';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { MainComponent } from './main/main.component';
 ],
   exports: [
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    NzStepsModule
 ],
   imports: [
     RouterModule,
@@ -41,7 +43,8 @@ import { MainComponent } from './main/main.component';
     MatFormFieldModule,
     MatPaginatorModule,
     MatInputModule,
-    MatSortModule
+    MatSortModule,
+    NzStepsModule
   ],
 })
 export class PagesModule { }

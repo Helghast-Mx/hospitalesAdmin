@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+
+import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from "rxjs/operators";
+
 import { RegisterForm } from '../interfaces/register-form.interface';
 import { environment } from 'src/environments/environment';
 import { LoginForm } from '../interfaces/login-form.interface';
-import { Observable, of } from 'rxjs';
+import { Usuario } from '../models/usuario.model';
 
 const api_url = environment.apiUrl
 
@@ -17,6 +20,8 @@ declare const gapi:any
 export class UsuarioService {
 
   public auth2 :any
+  public usuario : Usuario;
+
   constructor( private http:HttpClient ) { 
     
   }
@@ -31,6 +36,9 @@ export class UsuarioService {
     }).pipe(
       tap( (resp : any) =>{
         console.log(resp);
+        const {  email, google, nombre, role, uid, img }  = resp.usuario;
+
+        this.usuario = new Usuario(nombre, email, '', role, google, img, uid)
         localStorage.setItem('token', resp.token)
       } ), //necesitamos pasar la respuesta a un valor booleano
       map( resp => true  ),
